@@ -1,0 +1,1064 @@
+
+/* Fonts */
+:root {
+  --default-font: "Almarai",  system-ui, -apple-system, "Almarai", Roboto, "Almarai", Arial, "Almarai", "Almarai", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Almarai",  sans-serif;
+  --nav-font: "Almarai";
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --default-color: #1E4691; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #d26710; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #1E4691; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #1E4691;  /* The default color of the main navmenu links */
+  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #0a0101; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #f4efef; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #090203; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-background-color: #ffffff;
+  --nav-link-color: #1E4691;
+  --nav-hover-color: #d26710;
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+  --background-color: #f4f5fe;
+  --surface-color: #ffffff;
+}
+s
+.dark-background {
+  --background-color: #08005e;
+  --default-color: #ffffff;
+  --heading-color: #050101;
+  --surface-color: #0c0091;
+  --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+  
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body { 
+  background-image: url('/BG.png'); /* رابط الصورة */
+  background-size: cover; /* تغطية كاملة */
+  background-repeat: no-repeat; /* عدم التكرار */
+  background-attachment: fixed; /* تثبيت الخلفية */
+  background-position: center; /* توسيط الصورة */
+  font-family: var(--default-font);
+
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  text-align: center;
+  margin-bottom: 1px;
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 100px;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+  
+}
+
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: right;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 6;
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 10;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 10rem -6rem 0;
+  border: 3rem solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  padding: 1px 2px 4px 1px;
+  transition: all 0.5s;
+  z-index: 997;
+  position:relative;
+ 
+}
+
+
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 0.1rem;
+  margin-right: 1ch;
+}
+
+.header .logo h1 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.scrolled .header {
+  box-shadow: 0rem 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Header on Scroll
+------------------------------*/
+.scrolled .header {
+  --background-color: #ffffff;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* القائمة بشكل عام */
+.navmenu {
+  position: fixed; /* تثبيت القائمة */
+  top: 0;
+  right: 700px;
+  width: 100%;
+  padding: 10px 20px;
+  background:fixed; /* الخلفية تكون شفافة في البداية */
+  transition: background-color 0.3s ease, box-shadow 0.2s ease; /* تأثير الانتقال للخلفية */
+  z-index: 1000;
+}
+
+
+
+.navmenu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navmenu li {
+  margin: 0 1rem;
+}
+
+.navmenu a {
+  text-decoration: none;
+  color: var(--nav-link-color);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 20px;
+  transition: color 0.3s ease;
+}
+
+.navmenu a:hover,
+.navmenu .active {
+  color: var(--nav-hover-color);
+}
+
+/* زر القائمة للجوال */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* للجوال */
+@media (max-width: 768px) {
+  .navmenu ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75%;
+    height: 100%;
+    background: var(--nav-background-color);
+    padding-top: 3rem;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+  }
+
+  .navmenu ul.active {
+    display: flex;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .navmenu li {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.footer .copyright {
+  padding: 25px 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .credits {
+  margin-top: 6px;
+  font-size: 15px;
+  color:var(--default-color);
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color);
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 3rem);
+  left: calc(50% - 3rem);
+  border: 1rem solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-radius: 50%;
+  width: 1rem;
+  height: 2rem;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+/* تنسيق زر العودة إلى الأعلى */
+.scroll-top {
+  display: none; /* مخفي بشكل افتراضي */
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  background-color: #022f5f;
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.scroll-top i {
+  font-size: 2.4rem;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+/* عند التمرير لأسفل، يظهر الزر */
+.scroll-top.active {
+  display: block; /* إظهار الزر عند الوصول للأسفل */
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  position: relative;
+}
+
+.page-title .heading {
+  padding: 80px 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.page-title .heading h1 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.page-title nav {
+  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
+  padding: 20px 0;
+}
+
+.page-title nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title nav ol li+li {
+  padding-left: 10px;
+}
+
+.page-title nav ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  padding: 80px 80px;
+  scroll-margin-top: 50px;
+  overflow:clip;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 6px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center; /* يوسّط النص داخل الحاوية */
+  padding-bottom: 60px; /* إضافة مساحة سفلية */
+  position: relative; /* لتحديد موضع المحتوى بسهولة عند الحاجة */
+  margin: 0 auto; /* يوسّط العنصر نفسه داخل الحاوية الرئيسية */
+  max-width: 800px; /* تحديد عرض مناسب للحاوية */
+  display: flex; /* استخدام Flexbox لتوسيط المحتوى */
+  flex-direction: column; /* ترتيب العناصر عموديًا */
+  align-items: center; /* يوسّط العناصر أفقيًا */
+  justify-content: center; /* يوسّط العناصر عموديًا */
+}
+
+.section-title h2 {
+  font-size: 15px; /* حجم النص صغير */
+  letter-spacing: 1px; /* زيادة المسافة بين الأحرف */
+  font-weight: bolder; /* النص عريض */
+  padding: 8px 20px; /* مساحة داخلية */
+  margin: 10px 0; /* ضبط المسافة العلوية والسفلية */
+  background: color-mix(in srgb, var(--accent-color), transparent 90%); /* لون خلفية مختلط */
+  color: var(--accent-color); /* لون النص */
+  display: inline-block; /* يأخذ النص حجمه الطبيعي */
+  text-transform: uppercase; /* النص بأحرف كبيرة */
+  border-radius: 50px; /* الزوايا دائرية */
+  font-family: var(--default-font); /* نوع الخط */
+}
+
+.section-title div {
+  color: var(--heading-color); /* لون النص */
+  padding: 10px; /* مساحة داخلية */
+  font-size: 32px; /* حجم النص */
+  font-weight: bold; /* النص عريض */
+  font-family: var(--heading-font); /* نوع الخط */
+  margin-top: 20px; /* مسافة علوية من العنصر السابق */
+}
+
+.section-title div .description-title {
+  color: var(--accent-color); /* لون النص مميز */
+  font-size: 20px; /* حجم النص الخاص بالوصف */
+  margin-top: 10px; /* مسافة علوية صغيرة */
+}
+
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+
+/* زر تسجيل الدخول */
+.btn-login {
+  display: inline-block; /* ضمان التعامل مع العنصر كزر */
+  text-decoration: none; /* إزالة التسطير */
+  background: linear-gradient(to right, #02356c, #ff7300); /* تدرج أزرق، برتقالي، رمادي */
+  color: white; /* لون النص */
+  border: none; /* إزالة الحواف الافتراضية */
+  border-radius: 10px; /* حواف مستديرة */
+  padding: 10px 20px; /* مسافة داخلية */
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer; /* مؤشر عند التمرير */
+  transition: all 0.4s ease; /* تأثير السلاسة */
+  text-align: center; /* محاذاة النص في المنتصف */
+  width: 200px; /* عرض الزر */
+  z-index: 10; /* ضمان الظهور فوق العناصر الأخرى */
+  margin: 10px 200px
+}
+
+.btn-login:hover {
+  background: linear-gradient(to right, #ff7300, #ffffff); /* تغيير التدرج عند التمرير */
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-login:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 115, 0, 0.7);
+}
+
+.btn-login:active {
+  transform: scale(0.95); /* تصغير الزر قليلاً */
+  box-shadow: 0 2px 4px f0f0f0(0, 0, 0, 0.2); /* تقليل الظل */
+}
+
+.btn-login.active {
+  background: white; /* اللون الأبيض عند التفعيل */
+  color: white; /* لون النص عند التفعيل */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* تأثير الظل */
+  border: 2px solid #f0f0f0; /* إضافة حافة */
+}
+
+
+/* الحاوية الرئيسية */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* مسافة بين النص والصورة */
+  justify-content: space-around;
+}
+
+/* ضبط النص */
+.text-container {
+  margin: 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+
+
+.img-fluid{
+max-width: 110%;
+margin: -150px -60px -200px 0;
+display: block;
+
+}
+
+.container h6 {
+  color: #022f5f;
+  font-size: 25px;
+  bottom: 10px;
+}
+
+
+@media (max-width: 991px) {
+  .hero .row {
+    flex-direction: column-reverse;
+  }
+  
+  .hero .col-lg-6 {
+    margin-bottom: 30px;
+  }
+}
+
+
+
+.hero .btn-get-started:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+  box-shadow: 0 8rem 2.8rem rgba(0, 0, 0, 0.1);
+}
+
+.hero .btn-watch-video {
+  font-size: 1.6rem;
+  transition: 0.5s;
+  margin-left: 2.5rem;
+  color: var(--default-color);
+  font-weight: 600;
+}
+
+.hero .btn-watch-video i {
+  color: var(--accent-color);
+  font-size: 3.2rem;
+  transition: 0.3s;
+  line-height: 0;
+  margin-right: 8rem;
+}
+
+.hero .btn-watch-video:hover {
+  color: var(--accent-color);
+}
+
+.hero .btn-watch-video:hover i {
+  color: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+.hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    margin-bottom: 3rem;
+  }
+
+  
+  .hero .btn-get-started,
+  .hero .btn-watch-video {
+    font-size: 1.3rem;
+  }
+}
+
+.hero .hero-waves {
+  display: block;
+  overflow: hidden;
+  width: 93.6%;
+  height:60px;
+  position: absolute;
+  left: 1rem;
+  bottom:-.70rem;
+  right: 2.7rem;
+  z-index: 2;
+}
+
+.hero .wave1 use {
+  animation: move-forever1 10s linear infinite;
+  animation-delay: -2s;
+  fill: var(--default-color);
+  opacity: 0.6;
+}
+
+.hero .wave2 use {
+  animation: move-forever2 8s linear infinite;
+  animation-delay: -2s;
+  fill: var(--default-color);
+  opacity: 0.4;
+}
+
+.hero .wave3 use {
+  animation: move-forever3 6s linear infinite;
+  animation-delay: -2s;
+  fill: var(--default-color);
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.features .feature-box {
+  background-color: var(--surface-color);
+  padding: 0rem 0.2rem;
+  box-shadow: 0 0 0 rgba(212, 16, 16, 0.1);
+  transition: 0.3s;
+  height: 100%;
+}
+
+.features .feature-box h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1rem;
+}
+.section p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-right: 10rem;
+  text-align: center;
+}
+
+.features .feature-box i {
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  color: var(--accent-color);
+  line-height: 0;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1.4rem;
+  border-radius: 10rem;
+  transition: 0.3s;
+  border-top-right-radius: 0.2rem;
+}
+
+.features .feature-box:hover i {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+/* تصميم الإطار المتدرج */
+.dual-border {
+  border: 0.3rem solid transparent; /* اجعل الحدود شفافة أولاً */
+  border-image: linear-gradient(to right, #02356c, #ff7300) 1; /* تدرج أزرق وبرتقالي */
+  border-radius: 0.5rem; /* اجعل الحواف مستديرة */
+  padding: 0.4rem; /* أضف مسافة داخل المربع */
+  background-color: var(--surface-color); /* لون الخلفية الداخلي */
+  box-shadow: 0 0.4rem 1.4rem rgba(0, 0, 0, 0.1); /* ظل خفيف */
+  transition: transform 0.4s ease, box-shadow 0.5s ease; /* تأثير الانتقال */
+  align-items: center;
+}
+
+/* تأثير التمرير */
+.dual-border:hover {
+  transform: scale(1.05); /* تكبير بسيط عند التمرير */
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2); /* ظل أعمق عند التمرير */
+}
+
+/* أيقونة داخل الإطار */
+.dual-border i {
+  font-size: 0.4rem; /* حجم الأيقونة */
+  color: #ff7300; /* لون الأيقونة */
+  margin-right: 2rem; /* مسافة بين الأيقونة والنص */
+}
+
+/* النص داخل الإطار */
+.dual-border h3 {
+  font-size: 1.8rem; /* حجم النص */
+  font-weight: 20; /* جعل النص غامقًا */
+  margin: 0; /* إزالة الهوامش */
+  color: #333; /* لون النص */
+}
+
+.img-S{
+
+  width: 100%;
+
+}
+/*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.features .features-item {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #007bff, #ff5722); /* تدرج من الأزرق إلى البرتقالي */
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.features .features-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.features .features-item h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #fff; /* النص داخل المربعات أبيض */
+}
+
+.features .features-item a {
+  color: #fff; /* النص داخل الروابط أبيض */
+  text-decoration: none;
+}
+
+.features .features-item a:hover {
+  text-decoration: underline; /* إضافة تأثير عند التمرير فوق الرابط */
+}
+
+
+/*--------------------------------------------------------------
+# Stats Section
+--------------------------------------------------------------*/
+.stats i {
+  background-color: var(--surface-color);
+  color: var(--accent-color);
+  box-shadow: 0 wrem 2.5rem rgba(0, 0, 0, 0.1);
+  width: 5.4rem;
+  height: 5.4rem;
+  font-size: 2.4rem;
+  border-radius: 2rem;
+  border: 2rem solid var(--background-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stats .stats-item {
+  background-color: var(--surface-color);
+  margin-top: -27rem;
+  padding: 3rem 3rem 2.5rem 3rem;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 2rem 3.5rem rgba(0, 0, 0, 0.1);
+  border-radius: 4rem;
+  z-index: 0;
+}
+
+.stats .stats-item span {
+  font-size: 3.6rem;
+  display: block;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.stats .stats-item p {
+  padding: 0;
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 1.6rem;
+}
+
+/*--------------------------------------------------------------
+# Details Section
+--------------------------------------------------------------*/
+.details .features-item {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.details .features-item+.features-item {
+  margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  .details .features-item+.features-item {
+    margin-top: 2rem;
+  }
+}
+
+.details .features-item h3 {
+  font-weight: 700;
+  font-size: 2.6rem;
+}
+
+.details .features-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.details .features-item ul li {
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.details .features-item ul li:last-child {
+  padding-bottom: 0;
+}
+
+.details .features-item ul i {
+  font-size: 2rem;
+  padding-right: 2rem;
+  color: var(--accent-color);
+}
+
+.details .features-item p:last-child {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Faq Section
+--------------------------------------------------------------*/
+.faq {
+  text-align: center;
+  padding: 60px 30px;
+}
+
+.faq .content h3 {
+  font-weight: bold;
+  font-size: 34px;
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+
+.faq .faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq .faq-item {
+  background-color: var(--surface-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.1);
+  text-align: right;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.faq .faq-item:hover {
+  transform: scale(1.02);
+}
+
+.faq .faq-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq .faq-header h3 {
+  font-weight: bolder;
+  font-size: 18px;
+  margin: 0;
+  flex: 1;
+  text-align: right;
+}
+
+.section p {
+  font-size: 25px;
+  line-height: 2rem;
+  margin-right: 1px;
+  text-align: center;
+}
+
+.faq .faq-header .faq-icon {
+  font-size: 22px;
+  margin-left: 10px;
+  color: var(--accent-color);
+}
+
+.faq .faq-header .faq-toggle {
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.faq .faq-content {
+  display: none;
+  padding-top: 10px;
+  text-align: right;
+  margin: 0 10px 15px;
+  color: color-mix(in srgb, var(--default-color));
+}
+
+.faq .faq-item.faq-active .faq-content {
+  display: block;
+}
+
+.faq .faq-item.faq-active .faq-toggle {
+  transform: rotate(180deg); /* السهم للأسفل عند الفتح */
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info-item+.info-item {
+  margin-top: 50px;
+}
+
+.contact .info-item i {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+}
+
+.contact .info-item h3 {
+  padding: 0;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0px 10px 0 20px
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+  margin: 0px 10px 0 20px
+}
+
+.contact .info-item:hover i {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.contact .php-email-form {
+  height: 100%;
+}
+
+.contact .php-email-form input[type=text],
+.contact .php-email-form input[type=email],
+.contact .php-email-form textarea {
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow:none;
+  border-radius: 10px;
+  border: 0.3px solid var(--default-color);
+
+  color: var(--color-color);
+  background-color: color-mix(in srgb, var(--background-color));
+  border-color:  var(--accent-color);
+}
+
+.contact .php-email-form input[type=text]:focus,
+.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form input[type=text]::placeholder,
+.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 0%);
+}
+
+.contact .php-email-form button[type=submit] {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  padding: 10px 30px;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 10%);
+}
+
+/*--------------------------------------------------------------
+# Starter Section Section
+--------------------------------------------------------------*/
+.starter-section {
+  /* Add your styles here */
+}
